@@ -1,10 +1,11 @@
 import math
+import typing
 
 class Body(object):
     def __init__(self, mass, position, velocity):
         if mass <= 0:
             # Use the correct error type
-            raise RuntimeError("mass must be positive")
+            raise ValueError("mass must be positive")
 
         self.mass = mass
         self.position = position
@@ -53,7 +54,7 @@ class Body(object):
 class RoundBody(Body):
     def __init__(self, mass, position, velocity, radius):
         if radius <= 0:
-            raise RuntimeError("radius must be positive")
+            raise ValueError("radius must be positive")
         super().__init__(mass, position, velocity)
         self.radius = radius
 
@@ -63,7 +64,7 @@ class RoundBody(Body):
 class SquareBody(Body):
     def __init__(self, mass, position, velocity, side_length):
         if side_length <= 0:
-            raise RuntimeError("side length must be positive")
+            raise ValueError("side length must be positive")
 
         super().__init__(mass, position, velocity)
         self.side_length = side_length
